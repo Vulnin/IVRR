@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interactive Video Prototype</title>
+<link rel="stylesheet" href="/demos/demos.css" type="text/css">
+
+<!-- Dependencies -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="translations/js.cookie.js"></script>
+
+<!-- Able Player CSS -->
+<link rel="stylesheet" href="ableplayer.min.css" type="text/css"/>
+
+
+<!-- Able Player JavaScript -->
+<script src="translations/ableplayer.js"></script>
+
+<!-- Style for this example only -->
+<style>
+  main {
+    position: relative;
+    width: 100%;
+    margin: 0;
+  }
+  #player {
+    float: left;
+    width: 480px;
+    margin: 0;
+  }
+  #transcript {
+    height: 500px;
+    margin: 0;
+    padding-left: 500px;
+  }
+  #transcript div.able-desc {
+    width: 90%;
+  }
+</style>
+
+</head>
+
+<body>
+
+<h1>Interaktives Video Prototyp</h1>
+
+<p>Dies ist ein spezieller Videoplayer, der besondere Funktionen bietet. An bestimmten Stellen werden sie gefragt,
+   ob sie die Frage aus dem Video beantworten möchten. Dazu werden sie in einem neuen Tab zu einer externen Website
+    weitergeleitet. Daher müssen PopUps für diese Seite erlaubt sein.</p>
+<p>Im danebenstehenden Fenster ist eine automatisch generierte Zusammenfassung der Schlagwörter, welche im Video 
+  zusehen sind. Einige Wörter können daher keinen Sinn ergeben. Dafür sind sie mit der Zeitmarke bei denen sie im 
+  Video auftauchen verknüpft und wenn man auf sie klickt, springt das Video an diese Stelle. Mit STRG+F kann man 
+  so das ganze Video nach bestimmten Schlagwörtern durchsuchen. (Hinweis versuchen sie doch einmal die Stelle mit 
+  dem Begriff "P a s s w o r t" zu finden.)</p>
+
+<p> <strong>Bitte füllen sie die Umfrage am Ende dieser Seite aus!</strong></p>
+
+<noscript>Für die volle Funktionalität dieser Seite muss JavaScript aktiviert sein.</noscript> <!-- dies soll nur bei Browsern mit deaktiviertem JS erscheinen und hinweisen-->
+<!-- to write transcript to an external div, pass id of an empty div via data-transcript-div -->
+<main role="main">
+  <div id="player">
+    <video id="video1" preload="auto" width="480" height="360" data-able-player data-transcript-div="transcript" playsinline>
+      <source type="video/mp4" src="EvaVidtrim.mp4" data-desc-src=""/>
+      <track kind="descriptions" label="Infos" src="questions.vtt" srclang="en" default/> <!-- TODO hier brauche ich den Mode hidden-->
+      <track kind="captions" src="captions.vtt" srclang="en" label="English" hidden/>
+      <track kind="chapters" src="chapters.vtt" srclang="en"/>
+    </video>
+    <script src="behaviour.js"></script>
+  </div>
+  <div id="transcript"></div>
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfFsBXhPEdQQEjC5Yw4zUqRq4Gz0neXSef1QMvdL2oDq_A_mg/viewform?embedded=true" width="640" height="1675" frameborder="0" marginheight="0" marginwidth="0">Wird geladen…</iframe>
+</main>
+
+</body>
+</html>

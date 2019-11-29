@@ -1,0 +1,296 @@
+WEBVTT
+
+00:00:01.000 --> 00:00:23.000
+From interactive Videos
+Eine Konzeptidee Verbesserung Onlineangebots
+Technischen Fakultät Freiburg
+Albert-Ludwigs-Universität Freiburg
+
+00:00:23.000 --> 00:02:41.000
+Aktuelle Situation
+Videoaufnahmen Vorlesungen
+Einige davon enthalten Elemente, welche Aufnahme
+keinen Zweck mehr erfüllen
+Manuelle Programme interaktive Videos
+Ressourcen Aufwertung begrenzt
+Ungenutztes Potential
+
+00:02:41.000 --> 00:04:16.000
+Interaktive Videos
+Nutzung bereits getätigter Arbeit
+Automatischer Prozess
+Geringer Mehraufwand
+Vielfältigere Lernerfahrung
+Erhöhte Motivation
+Besseres Ergebnis
+
+00:04:16.000 --> 00:06:59.000
+Classroom Response Systems
+FREIBURG
+Durch technische Hilfsmittel mehr Beteiligung
+Einbettung durch Links oder QR-Codes
+Unmittelbare Auswertung
+Feedback Dozierenden
+Umgeht Angst Bloßstellung
+Erhöhte Motivation durch Mitwirkung
+Verständniskontrolle
+
+00:06:59.000 --> 00:09:29.000
+QR-Code
+Quick Response Schneller Zugriff
+Code
+Inhalt wird binär kodiert
+Quadratische Matrix schwarzen
+weißen Quadraten
+Fehlerkorrektur, Verlust
+toleriert
+Markierung Ecken
+Orientierung
+Scanner
+Fomat
+version
+Schlüssel Fehlerkorrektur
+Erforderliche Muster!
+4.1.Posiion
+4.2. Ausrichtung
+4.3. Synchronisation
+
+00:09:29.000 --> 00:11:25.000
+Eigenentwicklung Freiburg
+Quizze Vorlesung oder Selbststudium
+Gamification
+Auswertung Weiterverarbeitung über Datenbank
+Erweiterbar
+
+00:11:25.000 --> 00:11:26.000
+SMILE-Beispiel
+FREIBURG
+https://smile.informatik.uni-freiburg.de/~fuchsb/student/#234--quiz-detailview-1835
+
+00:11:26.000 --> 00:11:46.000
+Danalaad
+„Inn
+(dp)
+
+00:11:46.000 --> 00:13:44.000
+Mentimeter
+Drittanbieter Add-in direkt integrierbar Power Point
+Selbstständig Browser
+Kostenlose Basisfunktionen
+Unterschiedliche Quizformate
+Live-Anzeige
+FREIBURG
+
+00:13:44.000 --> 00:16:29.000
+Kahoot
+Online Quizshow
+Spielerischer Wettbewerbscharakter
+Nickname Ranking
+Öffentliche Sammlung
+Übungsfunktion virtuellen Gegenspielern
+Beschränkte Funktionalität kostenfreier Nutzung
+
+00:16:29.000 --> 00:19:10.000
+Interaktives Video
+FREIBURG
+Jede zusätzliche Einstellungsmöglichkeit außer bloßen
+Anschauen macht Video interaktiver:
+Pausieren
+Wiederholen
+Anpassen Geschwindigkeit
+Anklickbare Hyperlinks
+\Neiterleiten Fragen
+Anwählbare Kapitelstruktur Unterteilung
+
+00:19:10.000 --> 00:19:33.000
+Mentimeter-Beispiel
+www.menti.com
+Passwort: 494722
+
+00:19:33.000 --> 00:19:36.000
+www.menti.com code
+Interaktive Elemente einem Video sind?
+Anpassen Weiterleitung
+Geschwindigkeit Fragen
+Hide correct answer
+
+00:19:36.000 --> 00:19:58.000
+www.menti.com code
+Interaktive Elemente einem Video sind?
+
+00:19:58.000 --> 00:19:59.000
+www.menti.com code
+Interaktive Elemente einem Video sind?
+Weiterleitung
+Fragen
+Hide correct answer
+
+00:19:59.000 --> 00:20:01.000
+www.menti.com code
+Interaktive Elemente einem Video sind?
+
+00:20:01.000 --> 00:20:03.000
+www.menti.com code
+Interaktive Elemente einem Video sind?
+Weiterleitung
+Fragen
+Hide correct answer
+
+00:20:03.000 --> 00:20:11.000
+www.menti.com code
+Interaktive Elemente einem Video sind?
+ERBEN
+
+00:20:11.000 --> 00:22:08.000
+AULSToATZ
+Standard Untertitel Dateien Videos
+Festgelegtes Format
+Cues
+Mehrere Sprachen unterstützen
+Beschreibungen Gehörlose
+Metadaten
+
+00:22:08.000 --> 00:23:11.000
+Able Player
+Open Source
+HTMLS5 Einbindung
+Erleichterte Zugänglichkeit Menschen Behinderung
+Kann mehrere WebVTT Dateien nebeneinander laden
+Zusätzliche Metadaten können weitere Aktionen
+Video genutzt werden
+
+00:23:11.000 --> 00:23:12.000
+Kahoot-Beispiel
+FREIBURG
+https://create.kahoot.it/share/kahootevabsp/87c07328-4e0b-4cc5-b9cb-a12be4d5b233
+
+00:23:12.000 --> 00:23:36.000
+Kahoot-Beispiel
+FREIBURG
+
+00:23:36.000 --> 00:23:41.000
+Konzeptidee
+Aufzeichnung CRS-
+Unterstützung
+Markierungen sind QR-Codes oder
+Links
+Erkennung über QR-Codescanner
+Generierung WebVTTs
+Einbindung HTMLS5-Seite
+Able Player
+JavaScript Aktionen
+Quellvideo
+ChapterParser.py
+OCRK GR-Parser.py
+ContentParser.py QuestionParser.py
+chapters.vtt content.vtt questions.vtt
+JavaScript
+HTMLS-Page
+-Able Player
+
+00:23:41.000 --> 00:25:42.000
+Konzeptidee
+Aufzeichnung CRS-
+Unterstützung
+Markierungen sind QR-Codes oder
+Links
+Erkennung über QR-Codescanner
+Generierung WebVTTs
+Einbindung HTMLS5-Seite
+Able Player
+JavaScript Aktionen
+Quellvideo
+ChapterParser.py
+OCRK QR-Parser.py
+ContentParserpy QuestionParser.py
+chapters.vit content.vtt questions.vtt
+JavaScript
+HTMLS-Page
+-Able Player
+EEEEEREEEEEEEEEEEREEEEEEEEER
+
+00:25:42.000 --> 00:25:43.000
+Konzeptidee
+Aufzeichnung CRS-
+Unterstützung
+Markierungen sind QR-Codes oder
+Links
+Erkennung über QR-Codescanner
+Generierung WebVTTs
+Einbindung HTMLS5-Seite
+Able Player
+Quellvideo
+ChapterParser.py
+OCRK QR-Parser.py
+ContentParserpy QuestionParser.py
+chapters.vit
+content.vit questions.vtt
+JavaScript
+HTMLS-Page
+-Able Player
+
+00:25:43.000 --> 00:26:15.000
+Konzeptidee
+Aufzeichnung CRS-
+Unterstützung
+Markierungen sind QR-Codes oder
+Links
+Erkennung über QR-Codescanner
+Generierung WebVTTs
+Einbindung HTMLS5-Seite
+Able Player
+JavaScript Aktionen
+Quellvideo
+ChapterParser.py
+OCRK QR-Parser.py
+ContentParserpy QuestionParser.py
+chapters.vit content.vtt questions.vtt
+JavaScript
+HTMLS-Page
+-Able Player
+EEEEEREEEEEEEEEEEREEEEEEEEER
+
+00:26:15.000 --> 00:26:16.000
+Konzeptidee
+Aufzeichnung CRS-
+Unterstützung
+Links
+Able Player
+JavaScript Aktionen
+Markierungen sind QR-Codes oder
+Erkennung über QR-Codescanner
+Generierung WebVTTs
+Einbindung HTMLS5-Seite
+Quellvideo
+ChapterParser.py
+OCRK QR-Parser.py
+ContentParserpy QuestionParser.py
+chapters.vit content.vtt questions.vtt
+JavaScript
+HTMLS-Page
+-Able Player
+EEEEEREEEEEEEEEEEREEEEEEEEER
+
+00:26:16.000 --> 00:31:08.000
+Python Bibliotheken
+Open (Computer Vision)
+Einlesen Videos Frame Frame
+Framerate
+Scannen nach QR-Codes
+Tesseract
+(optical character recognition) Texterkennung
+Vergleich zweier erkannter Strings über Levenshtein-Distanz
+Erstellung WebVTT-Dateien
+
+00:31:08.000 --> 00:32:16.000
+Vorlesungsaufnahmen, welche genutzt haben, können
+automatisch aufbereitet werden, dass Videos
+interaktiven Elementen angeboten werden können
+Ohne manuelle Arbeit
+Keine Hiwis
+Keine zusätzlichen Kosten
+Hilfreiche Features motivierende Lernanreize
+
+00:32:16.000 --> 00:32:18.000
+Bitte Klicken Sie, Präsentation beenden...
+
