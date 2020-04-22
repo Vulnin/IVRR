@@ -1,4 +1,12 @@
 # IVRR
+
+Version 1.5:
+In this new version, you have to open a terminal in the directory, where IVRR_Main.py and the other files are.
+You now got more options for arguments in the terminal, which you can get help by -h. For example you can set a flag if your result should be a zipped folder or not.
+
+______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+Protptype:
 This is the prototyp for the Interactive Video Record Recognizer.
 With this tool you can create a html5 website including the able-player for presenting an interactive video.
 Therefore you have to use the OCRQRforVTT.py on a video in mpeg4-format.
