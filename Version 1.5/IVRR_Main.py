@@ -15,7 +15,7 @@ import sys
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("xyz.mp4", help="must be a .mp4 file")
+parser.add_argument("mp4", help="must be a .mp4 file")
 parser.add_argument("-o", "--output", type=str, default='raw.vtt', help="choose if output is on terminal or in output-file")
 parser.add_argument("-t", "--title", type=str, default="-", help="choose title for webpage")
 parser.add_argument("-l", "--language", type=str, default="deu", choices=["eng", "deu"], help="choose language for OCR and for html5-page")
@@ -28,7 +28,7 @@ output = args.output
 title = args.title
 toZip = args.toZip
 
-filename = sys.argv[1] 
+filename = args.mp4 
 # check if given mp4 file exists
 if not (os.path.exists(filename)):
     print("Given file doesn't exists!")
