@@ -7,22 +7,22 @@ import shutil
 
 def createZip(title, filepath, videofile, toZip):
     # new dir for the zipping
-    os.mkdir(filepath + "result")
+    os.mkdir(filepath + title + "result")
     # copy a dir into the zipping dir
-    shutil.copytree("translations", filepath + "result/translations")
+    shutil.copytree("translations", filepath + title + "result/translations")
     # copy files in zipping dir
-    shutil.copy("behaviour.js", filepath + "result/behaviour.js")
-    shutil.copy("ableplayer.min.css", filepath + "result/ableplayer.min.css")
-    shutil.copy(filepath + videofile, filepath + "result/" + videofile) 
+    shutil.copy("behaviour.js", filepath + title + "result/behaviour.js")
+    shutil.copy("ableplayer.min.css", filepath + title + "result/ableplayer.min.css")
+    shutil.copy(filepath + videofile, filepath + title + "result/" + videofile) 
     # move all needed files in zipping dir
-    shutil.move("captions.vtt", filepath + "result/captions.vtt")
-    shutil.move("chapters.vtt", filepath + "result/chapters.vtt")
-    shutil.move("questions.vtt", filepath + "result/questions.vtt")
-    shutil.move(title + ".html", filepath + "result/" + title + ".html")
+    shutil.move("captions.vtt", filepath + title + "result/captions.vtt")
+    shutil.move("chapters.vtt", filepath + title + "result/chapters.vtt")
+    shutil.move("questions.vtt", filepath + title + "result/questions.vtt")
+    shutil.move(title + ".html", filepath + title + "result/" + title + ".html")
     # zipping
     if toZip:
-        shutil.make_archive(filepath + "result", "zip", filepath + "result")
+        shutil.make_archive(filepath + title + "result", "zip", filepath + title + "result")
         # after zipping the temp dir can be removed, bc you only need the zipped dir
-        shutil.rmtree(filepath + "result")
+        shutil.rmtree(filepath + title + "result")
 
 #createZip("Test2min", "/home/ben/Dokumente/playground", "Test2min.mp4", True)
