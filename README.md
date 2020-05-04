@@ -13,6 +13,7 @@ if your mp4 video won't work you probably have to convert it like this:
 ffmpeg -i YourVideo.mp4 -pix_fmt yuv420p YourVideoConverted.mp4
 therefore you will need ffmpeg on your system
 
+______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 Version 1.5:
 In this new version, you have to open a terminal in the directory, where IVRR_Main.py and the other files are.
