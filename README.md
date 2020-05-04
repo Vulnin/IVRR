@@ -1,5 +1,19 @@
 # IVRR
 
+Requirements:
+
+Python 3
+python needs following modules:
+
+pip3 install opencv-python
+pip3 install tesseract
+tesseract needs also german language package: "deu.traineddata" from https://tesseract-ocr.github.io/tessdoc/Data-Files in your tesseract path for example: usr/share/tesseract-ocr/4.00/tessdata/deu.traineddata
+
+if your mp4 video won't work you probably have to convert it like this:
+ffmpeg -i YourVideo.mp4 -pix_fmt yuv420p YourVideoConverted.mp4
+therefore you will need ffmpeg on your system
+
+
 Version 1.5:
 In this new version, you have to open a terminal in the directory, where IVRR_Main.py and the other files are.
 You now got more options for arguments in the terminal, which you can get help by -h. For example you can set a flag if your result should be a zipped folder or not.
