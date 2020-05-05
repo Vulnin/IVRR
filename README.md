@@ -9,7 +9,7 @@ pip3 install opencv-python
 pip3 install tesseract
 tesseract needs also german language package: "deu.traineddata" from https://tesseract-ocr.github.io/tessdoc/Data-Files in your tesseract path for example: usr/share/tesseract-ocr/4.00/tessdata/deu.traineddata
 
-if your mp4 video won't work you probably have to convert it like this:
+if your mp4 video won't work (on firefox) you probably have to convert it like this:
 ffmpeg -i YourVideo.mp4 -pix_fmt yuv420p YourVideoConverted.mp4
 therefore you will need ffmpeg on your system
 
