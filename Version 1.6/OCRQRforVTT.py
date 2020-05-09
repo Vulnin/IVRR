@@ -54,18 +54,22 @@ def edit_distance(s1, s2):
 # help function for time format
 def sec2time(sec, n_msec=3):
     ''' Convert seconds to 'HH:MM:SS.FFF' '''
-    if hasattr(sec,'__len__'):
+    if hasattr(sec, '__len__'):
         return [sec2time(s) for s in sec]
+
+    sec = np.round(sec, n_msec)
     m, s = divmod(sec, 60)
     h, m = divmod(m, 60)
-    #d, h = divmod(h, 24) no need for days
+    # d, h = divmod(h, 24) no need for days
+
     if n_msec > 0:
-        pattern = '%%02d:%%02d:%%0%d.%df' % (n_msec+3, n_msec)
+        pattern = '%%02d:%%02d:%%0%d.%df' % (n_msec + 3, n_msec)
     else:
         pattern = r'%02d:%02d:%02d'
-    #if d == 0:
+    # if d == 0:
     return pattern % (h, m, s)
-    #return ('%d days, ' + pattern) % (d, h, m, s)
+    # return ('%d days, ' + pattern) % (d, h, m, s)
+    
 
 def OCRQRforVTT(video, output, language):
     qrd = cv2.QRCodeDetector()
