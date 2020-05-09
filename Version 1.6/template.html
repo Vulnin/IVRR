@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Videotitel</title>
+
+
+<!-- Dependencies -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="translations/js.cookie.js"></script>
+
+<!-- Able Player CSS -->
+<link rel="stylesheet" href="ableplayer.min.css" type="text/css"/>
+
+
+<!-- Able Player JavaScript -->
+<script src="translations/ableplayer.js"></script>
+
+<!-- Style for this example only -->
+<style>
+  main {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    background: lightgrey;
+  }
+  #player {
+    float: left;
+    width: 720px;
+    margin: 0;
+  }
+  #transcript {
+    position: relative;
+    height: 614px;
+    margin: 0;
+    padding-left: 5px;
+  }
+  #transcript div.able-desc {
+    width: 90%;
+  }
+
+  #searchbar {
+    position: absolute;
+    bottom: 15px;
+    right: 60px;
+  }
+
+  /* Transcript-window size etc. */
+  .able-transcript {
+    height: 508px;
+  }
+  
+
+   /* Style the button that is used to open and close the collapsible content */
+  .collapsible {
+    background-color: rgb(224, 207, 48);
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 22px;
+  }
+
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .collapsible:hover {
+    background-color: rgb(182, 184, 70);
+  }
+
+  .collapsible:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+  }
+
+  .active:after {
+    content: "\2212";
+  }
+
+  /* Style the collapsible content. Note: hidden by default */
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #fff7af;
+    font-size: 18px;
+  } 
+
+
+</style>
+
+
+</head>
+
+<body style="background: grey">
+
+<h2>Videotitel</h2>
+
+<noscript>Für die volle Funktionalität dieser Seite muss JavaScript aktiviert sein.</noscript> <!-- dies soll nur bei Browsern mit deaktiviertem JS erscheinen und hinweisen-->
+<!-- to write transcript to an external div, pass id of an empty div via data-transcript-div -->
+<main role="main">
+  <div id="player">
+    <video id="video1" preload="auto" width="720" height="540" data-able-player data-transcript-div="transcript" playsinline>
+      <source type="video/mp4" src="Videofile" data-desc-src=""/>
+      <track kind="descriptions" label="Infos" src="questions.vtt" srclang="en" default/> <!-- TODO hier brauche ich den Mode hidden-->
+      <track kind="captions" src="captions.vtt" srclang="en" label="English" hidden/>
+      <track kind="chapters" src="chapters.vtt" srclang="en"/>
+    </video>
+    <script src="behaviour.js"></script>
+  </div>
+  <div id="transcript">
+    <br />
+      <div id="searchbar">Zur schnellen Suche können Sie STRG+F bzw. CMD+F nutzen.</div>
+  </div>
+
+  <button type="button" class="collapsible">Hilfe</button>
+  <div class= "content"> <pre>
+    LearningFox verkürzt Ihre Zeit beim durcharbeiten von Aufzeichnungen von Webinaren
+    und Präsentationsaufzeichnungen.
+
+Wie funktioniert das?
+Im linken Fenster sehen Sie das Webinar, oder die Videoaufzeichnung einer Präsentation. 
+Im rechten Fenster sehen sie Schlagworte, die LearningFox in der Aufzeichnung ausfindig machen konnte.
+
+Suchen Sie nun mit dem Strg+F nach Schlagworten die Sie interessieren. 
+Mit Doppelklick auf das Schlagwort springt das Video automatisch an die entsprechende Stelle in der Aufzeichnung.
+Sie können die Schlagwörter natürlich auch einfach durchscrollen wie Bulletpoints und auf für Sie interessante
+Worte Doppelklicken.
+Hören Sie sich also gezielt nur diejenigen Sequenzen an, die für Sie auch relevant sind und kommen Sie schneller
+zum Punkt.
+
+Als Bonus ist hier ein Tool zur Interaktiven Befragung der Webinarteilnehmer hinterlegt. Dieses können Sie nutzen, 
+müssen Sie aber nicht.
+Es würde dazu Dienen eine Leistungsabfrage durchzuführen, oder Feedback und Umfragen einzubinden, sowohl live,
+während der Rede, oder zeitversetzt danach.
+
+Viel Erfolg mit LearningFox.
+</pre></div>  
+
+<!-- Following is for the Help-button -->
+<script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+  
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.maxHeight){
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      } 
+    });
+  }
+</script>
+
+</main>
+
+</body>
+</html>
