@@ -13,7 +13,7 @@ import sys
 
 import re
 
-def QuestionParser(vttfile, output="questions.vtt"):
+def QuestionParser(wdpath, vttfile, output="questions.vtt"):
     questionKeywords = ["smile", "menti", "kahoot"] # these are extendible
     temp = None
     cueTitlecounter = 1
@@ -21,13 +21,13 @@ def QuestionParser(vttfile, output="questions.vtt"):
     if output == '-':
         f = sys.stdout
     else:
-        f = open(output, "w", encoding="utf8")
+        f = open(wdpath + "/" + output, "w", encoding="utf8")
     
     f.write("WEBVTT\n\n")
     newBlock = False
     urlWritten = False
     
-    with open(vttfile, "r", encoding="utf8") as g: 
+    with open(wdpath + "/" + vttfile, "r", encoding="utf8") as g: 
         for line in g:
             # detect new block
             if line == "\n":

@@ -5,7 +5,7 @@
 import os
 import shutil
 
-def createZip(title, filepath, videofile, toZip):
+def createZip(wdpath, title, filepath, videofile, toZip):
     # new dir for the zipping
     os.mkdir(filepath + title)
     # button-icons for big play symbol on default needed, also it must be one level above translations
@@ -19,11 +19,12 @@ def createZip(title, filepath, videofile, toZip):
     shutil.copy("ableplayer.min.css", filepath + title + "/Data" + "/ableplayer.min.css")
     shutil.copy(filepath + videofile, filepath + title + "/Data/" + videofile) 
     # move all needed files in zipping dir
-    shutil.move("captions.vtt", filepath + title + "/Data" + "/captions.vtt")
-    shutil.move("chapters.vtt", filepath + title + "/Data" + "/chapters.vtt")
-    shutil.move("questions.vtt", filepath + title + "/Data" + "/questions.vtt")
-    shutil.move(title + ".html", filepath + title + "/Data/" + title + ".html")
-    # zipping
+    shutil.move(wdpath + "/captions.vtt", filepath + title + "/Data" + "/captions.vtt")
+    shutil.move(wdpath + "/chapters.vtt", filepath + title + "/Data" + "/chapters.vtt")
+    shutil.move(wdpath + "/questions.vtt", filepath + title + "/Data" + "/questions.vtt")
+    #shutil.move(wdpath + "/" + title + ".html", filepath + title + "/Data/" + title + ".html")
+    shutil.move(wdpath + "/index.html", filepath + title + "/Data/index.html")
+# zipping
     if toZip:
         shutil.make_archive(filepath + title, "zip", filepath + title)
         # after zipping the temp dir can be removed, bc you only need the zipped dir

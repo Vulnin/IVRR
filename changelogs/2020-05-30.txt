@@ -1,0 +1,25 @@
+IVRR-2020-05-30
+
+changes:
+	- renamed:
+		- Version 1.5 => version_1.5
+		- Version 1.6 => version_1.6
+	- version_1.6/IVRR_Main.py
+		- added code which creates a working directory (wd_ + given filename)
+		- all generated files are stored there
+		- this allows the execution of more than one instance at the same time
+	- version_1.6/OCRQRforVTT.py
+		- added some logging (can be used to debug)
+		- for some videos, the OCR didn't terminate as the last frame
+			of the video was just processed again and again in an
+			infinte loop => fixed that by determining the amount of
+			frames before starting OCR and count the processed frames
+			version_1.6/CaptionParser.py
+	- version_1.6/ChapterParser.py
+		- adapted interfaces and pathes for the working directory
+	- version_1.6/QuestionParser.py
+		- adapted interfaces and pathes for the working directory
+	- version_1.6/createHtml.py
+		- adapted interfaces and pathes for the working directory
+	- version_1.6/createZip.py
+		- adapted interfaces and pathes for the working directory

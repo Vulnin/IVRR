@@ -11,6 +11,7 @@ import cv2, sys, tesserocr
 from numpy.linalg import norm
 import numpy as np
 import re
+#import logging
 # import argparse
 
 # parser = argparse.ArgumentParser()
@@ -78,7 +79,10 @@ def OCRQRforVTT(video, output, language):
     fpstotime = 1/int(cap.get(cv2.CAP_PROP_FPS)) # time of one frame
     fps3 = 3 * int(cap.get(cv2.CAP_PROP_FPS))  # framerate fps erst bestimmen dann jede 3te Sekunde
     fps = int(cap.get(cv2.CAP_PROP_FPS))
+    nrofframes = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     tempQR = None # last decoded QR-code; for comparison 
+    lastframereached = False
+    #logging.basicConfig(filename='debug.log', level=logging.DEBUG)
 
     ocrtext1 = ""
     ocrtext2 = ""
@@ -90,52 +94,82 @@ def OCRQRforVTT(video, output, language):
     else:
         f = open(output, "w", encoding="utf8")
     f.write("WEBVTT\n")
+    print("Number of Frames: " + str(nrofframes))
+    
     while (cap.isOpened()):
         i += 1
+        #logging.info("Looking at frame " + str(i))
+        print("Looking at Frame %s" % str(i) + "/" + str(nrofframes), end="\r")
         sec += fpstotime
         cap.grab()  # grab frame but not decode, save time and power, instead of read
+
+        #if i == 50000:
+        #  retval, frame = cap.retrieve()
+        #  cv2.imwrite("frame50000.jpg", frame)
+        #  break;
+
+        if i >= nrofframes:
+            lastframereached = True
+
         if i % fps != 0:  # jump every frame, except it's on full second
+            #logging.debug("Frame is skipped")
             continue
         
         elif firstround:
+            #logging.debug("First Round")
             firstround = False
             time1 = sec
-            _, frame = cap.retrieve()
+            retval, frame = cap.retrieve()
+            assert retval
             ocrtext1 = tesserocr.image_to_text(Image.fromarray(frame).convert('L'), lang=language)
             ocrtext1 = ocrtext1.replace("<", " ") # because < and & are special symbols in vtt; therefore some URLs don't work
             ocrtext1 = ocrtext1.replace("&", " ")
             ocrtext1 = delSmallWords(ocrtext1)
             ocrtext1 = "".join([s for s in ocrtext1.strip().splitlines(True) if s.strip()]) # getting rid of empty lines
+            #logging.debug("First Round done")
 
         else:
-            _, frame = cap.retrieve()  # just the n-th frame is decoded
-            if frame is None: # especially last one / end of video
+            #logging.debug("Default retrieving of frame")
+            retval, frame = cap.retrieve()  # just the n-th frame is decoded
+            #if frame is None: # especially last one / end of video
+            if ((not retval) or lastframereached):
+                #logging.debug("Frame is None => terminate")
                 f.write("\n" + sec2time(time1) + " --> " + sec2time(sec) + "\n") # write timeinterval for .vtt 
                 time1 = sec # overwrite old time variable
                 f.write(ocrtext1 + "\n")
                 ocrtext1 = ocrtext2 # overwrite old text variable
                 break
+            #logging.debug("Default retrieving of frame done")
 
             # this part is for OCR
+            #logging.debug("Begin OCR")
             img = Image.fromarray(frame).convert('L')  # needed for Texterkennung
             ocrtext2 = tesserocr.image_to_text(img, lang=language) # text is now a string object
             ocrtext2 = ocrtext2.replace("<", " ") # because < and & are special symbols in vtt; therefore some URLs don't work
             ocrtext2 = ocrtext2.replace("&", " ")
             ocrtext2 = delSmallWords(ocrtext2)
             ocrtext2 = "".join([s for s in ocrtext2.strip().splitlines(True) if s.strip()]) # getting rid of empty lines
+            #logging.debug("End OCR")
 
+            #logging.debug("check distance")
             if edit_distance(ocrtext1, ocrtext2) > 30:
+                #logging.debug("distance > 30 => write stuff to vtt")
                 f.write("\n" + sec2time(time1) + " --> " + sec2time(sec) + "\n") # write timeinterval for .vtt 
                 time1 = sec # overwrite old time variable
                 f.write(ocrtext1 + "\n")
                 ocrtext1 = ocrtext2 # overwrite old text variable
+                #logging.debug("writing done")
 
                 # this part checks for QR-Codes and writes in the raw.vtt
+                #logging.debug("check for QR")
                 data, bbox, im = qrd.detectAndDecode(frame)
                 if bbox is not None and im is not None:
                     if data != tempQR: # getting rid of double entries, if they are at nearly same time
+                        #logging.debug("Found new one")
                         #f.write(data + "\n")
                         ocrtext1 += ("\n" + data) # add decoded QR-Code to current text in separate line
                         tempQR = data
+                #logging.debug("check for QR done")
 
+    print()
     f.close()    
