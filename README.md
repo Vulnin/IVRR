@@ -7,11 +7,21 @@ python needs following modules:
 
 pip3 install opencv-python
 pip3 install tesseract
+sudo apt install tesseract-ocr libtesseract-dev libleptonica-dev pkg-config
+pip3 install tesserocr
+
 tesseract needs also german language package: "deu.traineddata" from https://tesseract-ocr.github.io/tessdoc/Data-Files in your tesseract path for example: usr/share/tesseract-ocr/4.00/tessdata/deu.traineddata
 
-if your mp4 video won't work (on firefox) you probably have to convert it like this:
+If your mp4 video won't work (on firefox) you probably have to convert it like this:
 ffmpeg -i YourVideo.mp4 -pix_fmt yuv420p YourVideoConverted.mp4
 therefore you will need ffmpeg on your system
+
+______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+Version 1.6:
+In this new version, you have to open a terminal in the directory, where IVRR_Main.py and the other files are.
+Try -h as argument to get more information.
+This version uses a working directory for each job, so it is possible to run multiple jobs at the same time as long as the input video files have different filenames.
 
 ______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 

@@ -1,4 +1,4 @@
-# This code can parse a raw.vtt file to create a caption vtt-file for use in a html5 site with able player
+# This code can parse a raw.vtt file to create a chapter list vtt-file for use in a html5 site with able player
 # Author: Benjamin Fuchs
 # University of Freiburg, Chair of Computer Architecture
 
@@ -12,21 +12,20 @@ import sys
 # parser.add_argument("-o", "--output", default='-', help="choose if output is on terminal or in output-file")
 # args = parser.parse_args()
 
-def CaptionParser(vttfile, output="captions.vtt"):
-
+def ChapterParser(wdpath, vttfile, output="chapters.vtt"):
     temp = None
 
     if output == '-':
         f = sys.stdout
     else:
-        f = open(output, "w", encoding="utf8")
+        f = open(wdpath + "/" + output, "w", encoding="utf8")
 
-    f.write("WEBVTT\n")
+    f.write("WEBVTT\n\n")
 
     newBlock = False
-    firstLine = None
+    firstLine = False
 
-    with open(vttfile, "r", encoding="utf8") as g: 
+    with open(wdpath + "/" + vttfile, "r", encoding="utf8") as g: 
         for line in g:
             # detect new block
             if line == "\n":
@@ -39,19 +38,11 @@ def CaptionParser(vttfile, output="captions.vtt"):
                 newBlock = False
                 firstLine = True
                 continue
-            
-            # ignore first line, cause it's chaptername
+
             if firstLine:
-                f.write("\n" + temp)
+                f.write(temp)
+                f.write(line + "\n")
                 firstLine = False
                 continue
             
-            # write all other lines
-            if (firstLine == False):
-                f.write(line)
-                continue
-
         f.close()
-
-# for testing the function
-#CaptionParser("raw.vtt", "captions.vtt")

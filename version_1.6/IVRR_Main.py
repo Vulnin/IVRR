@@ -52,19 +52,49 @@ print("filepath = " + filepath)
 print("filename = " + filename)
 print("toZip = " + str(toZip))
 
+# create working directory
+wdpath = "wd_" + filename
+
+try:
+    os.mkdir(wdpath)
+except OSError:
+    print("Creation of working directory %s failed!" % wdpath)
+    exit()
+else:
+    print("Working directory %s created!" % wdpath)
+
 # step 1 parse video for raw.vtt
 if args.debugoutput:
     OCRQRforVTT(sys.argv[1], "-", language)
     exit()
-else: OCRQRforVTT(sys.argv[1], "raw.vtt", language)
+else: OCRQRforVTT(sys.argv[1], wdpath + "/raw.vtt", language)
 
 # step 2 create captions.vtt from raw.vtt
-CaptionParser("raw.vtt",)
-ChapterParser("raw.vtt",)
-QuestionParser("raw.vtt",)
+CaptionParser(wdpath, "raw.vtt",)
+ChapterParser(wdpath, "raw.vtt",)
+QuestionParser(wdpath, "raw.vtt",)
 
 # step 3 create html
-createHtml(title, filename, language)
+createHtml(wdpath, title, filename, language)
 
 # step 4 create zip
-createZip(title, filepath, filename, toZip)
+createZip(wdpath, title, filepath, filename, toZip)
+
+# delete raw.vtt (should be last file in working directory)
+try:
+    os.remove(wdpath + "/raw.vtt")
+except OSError:
+    print("Deleting of raw.vtt in working directory %s failed!" % wdpath)
+    exit()
+else:
+    print("raw.vtt in working directory %s deleted!" % wdpath)
+
+# delete working directory
+try:
+    os.rmdir(wdpath)
+except OSError:
+    print("Deleting of working directory %s failed! The folder might not be empty which indicates an error before!" % wdpath)
+    exit()
+else:
+    print("Working directory %s deleted!" % wdpath)
+
